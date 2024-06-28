@@ -1,14 +1,19 @@
 #!/usr/bin/python3
 """This module defines a class User"""
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey
+from models.base_model import BaseModel
+from sqlalchemy import Column
+from sqlalchemy import String
+from models.place import Place
+from models.base_model import Base
+from sqlalchemy.orm import relationship
 
 
-class User(BaseModel, Base):
+class User(BaseModel):
     """This class defines a user by various attributes"""
-    """__table_args__ = {'extend_existing': True}"""
-    __tablename__ = "users"
+    __tablename = "users"
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
+    places = relationship("Places", backref="user")
+    reviews = relationship("Reviews", backref="user")
