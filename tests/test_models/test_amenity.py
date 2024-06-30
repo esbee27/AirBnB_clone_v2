@@ -7,9 +7,10 @@ from models.base_model import BaseModel
 import pep8
 
 
-class test_Amenity(unittest.Testcase):
-    """ """
-  @classmethod
+class test_Amenity(unittest.TestCase):
+    """Tests amenity class"""
+
+    @classmethod
     def setUpClass(cls):
         """set up for test"""
         cls.amenity = Amenity()
